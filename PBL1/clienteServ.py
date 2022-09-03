@@ -1,3 +1,4 @@
+
 import socket 
 ip = input('digite o ip de conexao: ') 
 port = 7000 

@@ -24,7 +24,7 @@ class Cliente:
     def get_contas(self):
         return self.contas
     
-    def get_idHidrometro(self):
+    def get_id_hidrometro(self):
         return self.id_hidrometro
 
 
