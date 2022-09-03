@@ -1,14 +1,15 @@
 class Concessionaria:
 
-    def __init__(self, nome, clientes, adms, contas_abertas, vazamentos):
+    def __init__(self, nome, clientes, adms, hidrometros, contas_abertas, vazamentos):
 
         self.nome = nome
         self.clientes = clientes
         self.adms = adms
         self.contas_abertas = contas_abertas
         self.vazamentos = vazamentos
+        self.hidrometros = hidrometros
  
- 
+
     def get_nome(self):
         return self.nome
     
@@ -23,6 +24,9 @@ class Concessionaria:
 
     def get_vazamentos(self):
         return self.vazamentos
+
+    def get_hidrometros(self):
+        return self.hidrometros
 
 
     def set_nome(self, nome):
@@ -39,4 +43,11 @@ class Concessionaria:
 
     def set_vazamentos(self, vazamentos):
         self.vazamentos = vazamentos
+
+    def set_hidrometros(self, hidrometros):
+        self.hidrometros = hidrometros
     
+    #def gerarFatura(self, matricula):
+      #  va
+     #   while self.clientes != matricula:
+

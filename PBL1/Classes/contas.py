@@ -1,4 +1,4 @@
-class Adm:
+class Contas:
 
     def __init__(self, data, valor, consumo, status_pagamento):
 
@@ -31,7 +31,8 @@ class Adm:
 
     def set_status_pagamento(self, status_pagamento):
         self.status_pagamento = status_pagamento
+        
 
-    def calcularValor(self,consumo)
+    def calcularValor(self,consumo):
         valorTotal = 5.00 * consumo
         return valorTotal
