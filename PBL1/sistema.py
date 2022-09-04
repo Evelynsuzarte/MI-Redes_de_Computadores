@@ -15,18 +15,14 @@ def cadastrarCliente():
     nome = input()
     matricula = input()
     senha = input()
-    contas_abertas = 
+    contas_abertas = input()
 
 
 
 def login(matricula, senha):
     for clientes in range:
         if matricula == clientes.matricula and senha == clientes.senha:
-
-
-
-
-
+            input()
 
 
 

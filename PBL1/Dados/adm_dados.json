@@ -1,0 +1,13 @@
+[
+    {
+        "nome": "Rodrigo Simas Vieira",
+        "matricula": 100010,
+        "senha": "rod123"
+    },
+
+    {
+        "nome": "Mariele Simas Vieira",
+        "matricula": 100020,
+        "senha": "mar123"
+    }
+]

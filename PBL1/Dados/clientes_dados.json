@@ -1,0 +1,90 @@
+[
+    {
+        "nome": "Carlinha Dias Macedo",
+        "matricula": 550010,
+        "senha": "car123",
+        "status_agua": "ativo",
+        "contas": [
+            {
+                "data": "2022-08-1",
+                "valor": 120.50,
+                "consumo": [
+                    {
+                        "quantidade_m3": 10,
+                        "data":"2022-07-15",
+                        "hora": "12:00:00"
+                    },
+                    {
+                        "quantidade_m3": 44.10,
+                        "data":"2022-07-31",
+                        "hora": "12:00:00"
+                    }
+                ],
+                "status_pagamento": "fechado"
+            },
+            {
+                "data": "2022-09-1",
+                "valor": 90.00 ,
+                "consumo": [
+                    {
+                        "quantidade_m3": 9,
+                        "data":"2022-08-15",
+                        "hora": "12:00:00"
+                    },
+                    {
+                        "quantidade_m3": 10,
+                        "data":"2022-08-31",
+                        "hora": "12:00:00"
+                    }
+                ],
+                "status_pagamento": "fechado"
+            }
+        ],
+        "id_hidrometro": 1000
+
+    },
+
+    {
+        "nome": "Pedrinho Silva Jordão",
+        "matricula": 550011,
+        "senha": "ped123",
+        "status_agua": "ativo",
+        "contas": [
+            {
+                "data": "2022-08-1",
+                "valor": 120.50,
+                "consumo": [
+                    {
+                        "quantidade_m3": 94.29,
+                        "data":"2022-07-15",
+                        "hora": "12:00:00"
+                    },
+                    {
+                        "quantidade_m3": 26.21,
+                        "data":"2022-07-31",
+                        "hora": "12:00:00"
+                    }
+                ],
+                "status_pagamento": "fechado"
+            },
+            {
+                "data": "2022-09-1",
+                "valor": 90.00 ,
+                "consumo": [
+                    {
+                        "quantidade_m3": 76,
+                        "data":"2022-08-15",
+                        "hora": "12:00:00"
+                    },
+                    {
+                        "quantidade_m3": 14,
+                        "data":"2022-08-31",
+                        "hora": "12:00:00"
+                    }
+                ],
+                "status_pagamento": "fechado"
+            }
+        ],
+        "id_hidrometro": 2000
+    }
+]
