@@ -1,13 +1,20 @@
-class Hidrometro:
+from threading import Thread
+import random 
 
-    def __init__(self, nome, matricula, senha, status_agua, contas, id_hidrometro):
+class Hidrometro(Thread):
+
+    def __init__(self, nome, matricula, senha, status_agua, consumo_atual, id_hidrometro):
 
         self.nome = nome
         self.matricula = matricula
         self.senha = senha
         self.status_agua = status_agua
-        self.contas = contas
+        self.consumo_atual = consumo_atual
         self.id_hidrometro = id_hidrometro
+
+    def run(self):
+        random.randrange()
+        print(self.consumo_atual)
 
     def get_nome(self):
         return self.nome
@@ -21,8 +28,8 @@ class Hidrometro:
     def get_statusAgua(self):
         return self.status_agua
 
-    def get_contas(self):
-        return self.contas
+    def get_consumo_atual(self):
+        return self.consumo_atual
     
     def get_idHidrometro(self):
         return self.id_hidrometro
@@ -41,8 +48,8 @@ class Hidrometro:
     def set_statusAgua(self, statusAgua):
         self.status_agua = statusAgua
 
-    def set_contas(self, contas):
-        self.contas = contas
+    def set_consumo_atual(self, consumo_atual):
+        self.consumo_atual = consumo_atual
     
     def set_idHidrometro(self, idHidrometro):
         self.id_hidrometro = idHidrometro
