@@ -1,6 +1,7 @@
 import socket
 
 HOST = socket.gethostbyname(socket.gethostname())               # Endereco IP do Servidor
+#print(HOST)
 PORT = 5000                                                     # Porta que o Servidor esta
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 orig = (HOST, PORT)
