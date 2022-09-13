@@ -1,4 +1,4 @@
-class Comsumo:
+class Consumo:
 
     def __init__(self, quantidade_m3, data, hora):
 
