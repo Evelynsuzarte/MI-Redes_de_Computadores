@@ -25,5 +25,7 @@ class Adm:
     def set_senha(self, senha):
         self.senha = senha
 
-    #def cortarAgua(self, matricula, clientes)
+    def cortarAgua(self, matricula, clientes):
+        while clientes != matricula:
+            clientes.
 
