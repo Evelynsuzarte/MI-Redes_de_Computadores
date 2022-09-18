@@ -1,3 +1,4 @@
+from this import d
 from threading import Thread
 import time 
 import socket
@@ -86,11 +87,29 @@ class Hidrometro(Thread):
         else:
             print("Seu hidrômetro encontra-se bloqueado, entre em contato com a empresa distribuidora!!")
         
+    #função que recebe o bloqueio e desbloqueio do hidrometro  - em 'status_agua" 
+    def recebeDados(self):
+        HOST = socket.gethostbyname(socket.gethostname())               # Capta o endereco IP do Servidor
+        PORT = 5000                                                     # Porta que o Servidor esta
 
-    
-hidrometro = Hidrometro(1, 550010, 50, "Rua da Conceição")
-hidrometro.enviaDados()
+        tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)         #conexão TCP
+        orig = (HOST, PORT)
+        tcp.bind(orig)
+        tcp.listen(1)
 
+        con, cliente = tcp.accept()
+        print('Conectado por',cliente) 
+        msg = con.recv(1024)
+        print (cliente, msg)
 
-hidrometro2 = Hidrometro(1, 550010, 99, "Rua da Conceição")
-hidrometro2.enviaDados()
+        self.status_agua = msg
+        print("O hidrometro encontra-se no estado:",msg)
+        
+        print ('Finalizando conexao do cliente',cliente)            #finaliza a conexão com o cliente
+        con.close()
+
+def main():    
+    hidrometro = Hidrometro(1, 550010, 50, "Rua da Conceição")
+    hidrometro.enviaDados()
+    #hidrometro.recebeDados()
+
