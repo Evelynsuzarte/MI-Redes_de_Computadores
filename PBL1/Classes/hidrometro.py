@@ -1,8 +1,6 @@
-from this import d
 from threading import Thread
 import time 
 import socket
-import string
 
 class Hidrometro(Thread):
 
@@ -54,6 +52,7 @@ class Hidrometro(Thread):
     
     def set_esta_vazando(self, status):
         self.esta_vazando = status
+
 
 
     #função que sinaliza que há vazamento
@@ -108,8 +107,8 @@ class Hidrometro(Thread):
         print ('Finalizando conexao do cliente',cliente)            #finaliza a conexão com o cliente
         con.close()
 
-def main():    
-    hidrometro = Hidrometro(1, 550010, 50, "Rua da Conceição")
-    hidrometro.enviaDados()
-    #hidrometro.recebeDados()
+ 
+hidrometro = Hidrometro(1, 550010, 50, "Rua da Conceição")
+hidrometro.enviaDados()
+#hidrometro.recebeDados()
 

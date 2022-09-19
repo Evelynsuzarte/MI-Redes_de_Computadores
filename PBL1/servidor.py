@@ -18,8 +18,10 @@ def servidor_recebe():
             if not msg: break
             print (cliente, msg)
 
-    print ('Finalizando conexao do cliente',cliente)            #finaliza a conexão com o cliente
-    con.close()
+        print ('Finalizando conexao do cliente',cliente)            #finaliza a conexão com o cliente
+        con.close()
+
+
 
 #função para enviar servindo como cliente
 def servidor_envia():
@@ -40,8 +42,8 @@ def servidor_envia():
     print ("Status do hidrometro atualizado com sucesso!" )                                     #finalização da conexão
     tcp.close()
 
-#servidor_recebe()
-servidor_envia()
+servidor_recebe()
+#servidor_envia()
 
 
 
