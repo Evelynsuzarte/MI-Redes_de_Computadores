@@ -1,5 +1,6 @@
 import http.server
 import socketserver
+import requests
 
 
 class myhandler(http.server.SimpleHTTPRequestHandler):

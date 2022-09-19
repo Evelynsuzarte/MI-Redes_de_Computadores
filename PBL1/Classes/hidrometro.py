@@ -86,6 +86,7 @@ class Hidrometro(Thread):
         else:
             print("Seu hidrômetro encontra-se bloqueado, entre em contato com a empresa distribuidora!!")
         
+
     #função que recebe o bloqueio e desbloqueio do hidrometro  - em 'status_agua" 
     def recebeDados(self):
         HOST = socket.gethostbyname(socket.gethostname())               # Capta o endereco IP do Servidor
@@ -98,17 +99,17 @@ class Hidrometro(Thread):
 
         con, cliente = tcp.accept()
         print('Conectado por',cliente) 
-        msg = con.recv(1024)
+        msg = con.recv(1024).decode()
         print (cliente, msg)
 
         self.status_agua = msg
-        print("O hidrometro encontra-se no estado:",msg)
+        print("O hidrômetro encontra-se no estado:",msg)
         
-        print ('Finalizando conexao do cliente',cliente)            #finaliza a conexão com o cliente
+        print ('Finalizando conexao do cliente',cliente)                #finaliza a conexão com o cliente
         con.close()
 
  
 hidrometro = Hidrometro(1, 550010, 50, "Rua da Conceição")
-hidrometro.enviaDados()
-#hidrometro.recebeDados()
+#hidrometro.enviaDados()
+hidrometro.recebeDados()
 

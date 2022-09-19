@@ -14,11 +14,11 @@ def servidor_recebe():
         con, cliente = tcp.accept()
         print('Conectado por',cliente)                              #sinaliza qual cliente está conectado
         while True:
-            msg = con.recv(1024)
+            msg = con.recv(1024).decode()
             if not msg: break
             print (cliente, msg)
 
-        print ('Finalizando conexao do cliente',cliente)            #finaliza a conexão com o cliente
+        print ('Finalizando conexão do cliente',cliente)            #finaliza a conexão com o cliente
         con.close()
 
 
@@ -30,7 +30,7 @@ def servidor_envia():
     
     tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)         # configuração TCP
     dest = (HOST, PORT)                                             # destino de envio
-    tcp.connect(dest)                                               # conectando
+    tcp.connect(dest)                                         # conectando
 
     print(HOST)
     print(dest)
@@ -39,11 +39,11 @@ def servidor_envia():
     msg = input()
     tcp.send(msg.encode('utf-8'))                                   #conversão mensagem
 
-    print ("Status do hidrometro atualizado com sucesso!" )                                     #finalização da conexão
+    print ("Status do hidrômetro atualizado com sucesso!" )                                     #finalização da conexão
     tcp.close()
 
-servidor_recebe()
-#servidor_envia()
+#servidor_recebe()
+servidor_envia()
 
 
 
