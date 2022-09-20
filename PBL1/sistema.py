@@ -15,15 +15,15 @@ contas_abertas = []
 vazamentos = []
 hidrometros = []
 
-
 #carregamento de dados
-with open("PBL1\Dados\dados_adm.json", encoding='utf-8') as meu_json:
+with open("PBL1/Dados/dados_adm.json", encoding='utf-8') as meu_json:
     adms = json.load(meu_json)
 
-#for i in adms:
-adm_atual = Adm(adms[0]['nome'],adms[0]['matricula'],adms[0]['senha'])
-print(adm_atual.nome)
-    #admsLista.extend(adm_atual)
+for i in adms:
+    adm_atual = Adm(adms[0]['nome'],adms[0]['matricula'],adms[0]['senha'])
+    admsLista.append(adm_atual)
+    
+print(admsLista[1].nome)
 
 #cliente = Cliente(dados[0]['nome'],dados[0]['matricula'],dados[0]['senha'])
 #print(admsLista[0])
