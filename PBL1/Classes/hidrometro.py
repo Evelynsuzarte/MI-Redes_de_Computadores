@@ -1,3 +1,4 @@
+from cProfile import run
 from threading import Thread
 import time 
 import socket
@@ -13,7 +14,12 @@ class Hidrometro(Thread):
         self.endereco = endereco                #endereco de registro
         self.esta_vazando = False               #vazando (true) ou nao vazando (false)
 
-    
+    def run(self):
+        self.enviaDados()
+        
+
+
+
     #bloco get
     def get_matricula(self):
         return self.matricula

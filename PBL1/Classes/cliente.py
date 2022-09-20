@@ -1,14 +1,15 @@
 class Cliente:
 
-    def __init__(self, nome, matricula, senha, status_agua, contas, id_hidrometro):
+    def __init__(self, nome, matricula, senha, id_hidrometro):
 
         self.nome = nome
         self.matricula = matricula
         self.senha = senha
-        self.status_agua = status_agua
-        self.contas = contas
+        self.status_agua = True
+        self.contas = []
         self.id_hidrometro = id_hidrometro
 
+    #gets
     def get_nome(self):
         return self.nome
     
@@ -28,7 +29,7 @@ class Cliente:
         return self.id_hidrometro
 
 
-
+    #sets
     def set_nome(self, nome):
         self.nome = nome
     
