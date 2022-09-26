@@ -1,12 +1,12 @@
 class Concessionaria:
 
-    def __init__(self, nome, clientes, adms, hidrometros, contas_abertas, vazamentos):
+    def __init__(self, nome, clientes, adms, hidrometros, contas_abertas):
 
         self.nome = nome
         self.clientes = clientes
         self.adms = adms
         self.contas_abertas = contas_abertas
-        self.vazamentos = vazamentos
+        self.vazamentos = []
         self.hidrometros = hidrometros
  
 

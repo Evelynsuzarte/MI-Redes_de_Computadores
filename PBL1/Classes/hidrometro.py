@@ -1,4 +1,3 @@
-from cProfile import run
 from threading import Thread
 import time 
 import socket
@@ -17,9 +16,6 @@ class Hidrometro(Thread):
     def run(self):
         self.enviaDados()
         
-
-
-
     #bloco get
     def get_matricula(self):
         return self.matricula
@@ -115,7 +111,7 @@ class Hidrometro(Thread):
         con.close()
 
  
-hidrometro = Hidrometro(1, 550010, 50, "Rua da Conceição")
-#hidrometro.enviaDados()
-hidrometro.recebeDados()
+"""hidrometro = Hidrometro(1, 550010, 50, "Rua da Conceição")
+hidrometro.start
+hidrometro.recebeDados()"""
 

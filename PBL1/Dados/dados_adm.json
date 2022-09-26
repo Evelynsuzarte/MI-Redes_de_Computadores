@@ -1,13 +1,26 @@
 [
     {
-        "nome": "Rodrigo Simas Vieira",
+        "nome": "Rodriguinho Simas Vieira",
         "matricula": 100010,
         "senha": "rod123"
     },
 
     {
-        "nome": "Mariele Simas Vieira",
+        "nome": "Mariazinha Mineiro Lindinha",
         "matricula": 100020,
         "senha": "mar123"
+    },
+
+    {
+        "nome": "Pedrinho Brasil Silva",
+        "matricula": 100030,
+        "senha": "ped123"
+    },
+
+    {
+        "nome": "Renatinha Letras Santos",
+        "matricula": 100040,
+        "senha": "ren123"
     }
+
 ]
