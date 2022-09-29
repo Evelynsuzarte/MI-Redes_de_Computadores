@@ -1,0 +1,30 @@
+[
+    {
+        "nome": "Bruninha Gomes Francês",
+        "matricula": 5000,
+        "senha": "bru123",
+        "id_hidrometro": 1000
+    },
+
+    {
+        "nome": "Renatinha Miranda Carla",
+        "matricula": 5001,
+        "senha": "ren123",
+        "id_hidrometro": 1001
+    },
+
+    {
+        "nome": "Ricardão Almeida Jesus",
+        "matricula": 5002,
+        "senha": "ric123",
+        "id_hidrometro": 1002
+    },
+
+    {
+        "nome": "Claudinho Bochecha Silva",
+        "matricula": 5003,
+        "senha": "cla123",
+        "id_hidrometro": 1003
+    }
+
+]

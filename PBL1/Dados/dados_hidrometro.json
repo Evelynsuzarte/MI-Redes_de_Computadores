@@ -4,7 +4,7 @@
         "id_hidrometro": 1000,
         "matricula": 5000,
         "consumo_atual":10,
-        "endereco": "Rua da Preguiça, 50, Tombinha",
+        "endereco": "Rua da Preguiça, 50, Tombinha"
 
     },
     {
@@ -12,7 +12,7 @@
         "id_hidrometro":1001,
         "matricula":5001,
         "consumo_atual":5,
-        "endereco" : "Avenida do Alfabeto, 7, Feirinha",
+        "endereco" : "Avenida do Alfabeto, 7, Feirinha"
 
     },
     {
@@ -20,8 +20,7 @@
         "matricula":5002,
         "status_agua":true,
         "consumo_atual":10,
-        "endereco": "Rua da Preguiça, 50, Tombinha",
-        "esta_vazando":false
+        "endereco": "Rua da Preguiça, 50, Tombinha"
 
     },
     {
@@ -29,7 +28,6 @@
         "id_hidrometro":1003,
         "matricula":5003,
         "consumo_atual":5,
-        "endereco" :"Avenida do Alfabeto, 7, Feirinha",
-
+        "endereco" :"Avenida do Alfabeto, 7, Feirinha"
     }
 ]
