@@ -1,5 +1,6 @@
 import socket
 from threading import Thread
+from traceback import print_tb
 
 
 class Servidor():
@@ -46,10 +47,13 @@ class Servidor():
         msg = input()
         tcp.send(msg.encode('utf-8'))                                   #conversão mensagem
 
-        print ("Status do hidrômetro atualizado com sucesso!" )                                     #finalização da conexão
-        tcp.close()
+        if msg == "ativo" or msg == "bloqueado":
+            print ("Status do hidrômetro atualizado com sucesso!" )             
+        else:
+            print("Vazão atualizada com sucesso!")                       
+        tcp.close()                                                     #finalização da conexão
 
 #Servidor.start
-#Servidor.servidor_recebe()
-Servidor.servidor_envia()
+Servidor.servidor_recebe()
+#Servidor.servidor_envia()
 

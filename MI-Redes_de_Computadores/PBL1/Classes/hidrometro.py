@@ -1,9 +1,10 @@
+from re import M
 from threading import Thread
 import time 
 import socket
 from hidrometro_serv import Hidrometro_serv
 
-class Hidrometro(Thread):
+class Hidrometro():
 
     def __init__(self, id_hidrometro, matricula, consumo_atual, endereco):
         
@@ -106,15 +107,25 @@ class Hidrometro(Thread):
         print (cliente, msg)
 
         self.status_agua = msg
-        print("O hidrômetro encontra-se no estado:",msg)
         
-        
+        if msg == "ativo" or msg == "bloqueado" or msg == "desativado" or msg == 'ligado':
+            if msg == "ativo" or "ligado":
+                self.status_agua = True
+                print("Status atual: ", self.status_agua)
+            elif msg == "bloqueado" or msg == "desativado":
+                self.status_agua = False
+                print("Status atual: ", self.status_agua)
+        else:
+            self.consumo_atual =  msg
+            print("Vazão atual do hidrômetro: ",self.consumo_atual)
+            
+
         print ('Finalizando conexao do cliente',cliente)                #finaliza a conexão com o cliente
         con.close()
 
  
 hidrometro = Hidrometro(1, 550010, 50, "Rua da Conceição")
 #hidrometro.start
-#hidrometro.enviaDados()
-hidrometro.recebeDados()
+hidrometro.enviaDados()
+#hidrometro.recebeDados()
 
