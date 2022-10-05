@@ -1,8 +1,6 @@
-from re import I
 import socket
 from threading import Thread
 import time
-from turtle import st
 
 
 HOST1 = "127.0.0.1"
@@ -33,7 +31,7 @@ def servidor_recebe():
 def servidor_envia():
     #HOST = socket.gethostbyname(socket.gethostname())               # Endereco IP do Servidor
     HOST = HOST1
-    PORT_CLIENT = 8009                                                     # Porta que o Servidor esta
+    PORT_CLIENT = 5000                                                     # Porta que o Servidor esta
     dest = (HOST, PORT_CLIENT)                                             # destino de envio
 
     while True:
@@ -43,29 +41,41 @@ def servidor_envia():
             
             try:
                 while True:
-                    op = input("-------------- SISTEMA HIDRÔMETRO --------------\n1 - Bloqueio/Desbloqueio do hidrometro\n2 - Alterar vazão do hidrômetro\n0 - Sair\n--- Selecione: ")
-                    if op == 1:                                     #se for opção bloquear/desbloquear
-                        op2 = input("\nSelecione 1 para bloquear e 2 para desbloquear: ")
-                        if op2 == 1:                                #se for para bloquear
+                    op = int(input("-------------- SISTEMA HIDRÔMETRO --------------\n1 - Bloqueio/Desbloqueio do hidrometro\n2 - Alterar vazão do hidrômetro\n3 - Visualizar histórico de vazao\n4 - Visualizar consumo total\n0 - Sair\n--- Selecione: "))
+                    if (op == 1):                                     #se for opção bloquear/desbloquear
+                        op2 = int(input("\nSelecione 1 para bloquear e 2 para desbloquear: "))
+                        if (op2 == 1):                                #se for para bloquear
                             msg = "bloqueado"
                             tcp.send(msg.encode('utf-8'))
-                        elif op2 == 2:                              #se for para desbloquear
+                            break
+                        elif (op2 == 2):                              #se for para desbloquear
                             msg = "desbloqueado"
                             tcp.send(msg.encode('utf-8'))
-                    elif op == 2:                                   #se for opção alterar vazão
+                            break
+                    elif (op == 2):                                   #se for opção alterar vazão
                         novaVazao = int(input("\nDigite a nova vazão: "))
                         msg = str(novaVazao)        
                         tcp.send(msg.encode('utf-8'))
-                    elif op == 0:
+                        break
+                    elif (op == 3):                                   #se for opção visualizar histórico
+                        msg = "historico"    
+                        tcp.send(msg.encode('utf-8'))
+                        break
+                    elif (op == 4):                                   #para visualizar o consumo total de um período
+                        msg = "consumo total"
+                        tcp.send(msg.encode('utf-8'))
+                        break
+                    elif (op == 0):
                         break
                     else:
                         print("Você digitou a opção errada!!")
             finally:
                 print ('Finalizando conexão do cliente')            #finaliza a conexão com o cliente
                 tcp.close()
+                time.sleep(2)
         except:
             print("Conexão falhou, tentaremos conectar em 10 segundos.\nCarregando...\n")
-            time.sleep(8)                                          #Tempo para uma nova tentativa
+            time.sleep(10)                                          #Tempo para uma nova tentativa
 
 # --------------------------------  outras funções --------------------------------------------------
 
@@ -76,15 +86,9 @@ def comecar():
     thread2 = Thread(target=servidor_recebe)                          #Thread para recebimento de dados
 
     thread1.start()
-    time.sleep(1)     
-
     thread2.start()        
-    time.sleep(1)                      
-
-
 
 #------------------------------------------------
-
 comecar()
 
 

@@ -12,40 +12,48 @@ HOST1 = "127.0.0.1"
 
 #função que envia os dados de consumo do hidrometro -----------------------------------------------------
 def enviaDados():
-    while True:
-        if(hidrometro.get_statusAgua() == True):                                   #se não tiver bloqueado
+    try:
+        #HOST = socket.gethostbyname(socket.gethostname())           # Endereco IP do Servidor
+        HOST = HOST1
+        PORT_CLIENTE = 8000                                         # Porta que o Servidor esta
 
-            #HOST = socket.gethostbyname(socket.gethostname())           # Endereco IP do Servidor
-            HOST = HOST1
-            PORT_CLIENTE = 8000                                         # Porta que o Servidor esta
+        tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)     #configuração TCP
+        dest = (HOST, PORT_CLIENTE)                                 #destino de envio
+        tcp.connect(dest)                                           #conectando ao destino
 
-            tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)     #configuração TCP
-            dest = (HOST, PORT_CLIENTE)                                 #destino de envio
-            tcp.connect(dest)                                           #conectando ao destino
+        while True:
+            if(hidrometro.get_statusAgua() == True):                        #se não tiver bloqueado
 
-            print(HOST)                                                 #print HOST
-            print(dest)                                                 #print destino
+                print(HOST)                                                 #print HOST
+                print(dest)                                                 #print destino
 
-            msg = str(hidrometro.get_consumo_atual())                   #converte para string
-            while msg != '\x18':
-                tcp.send(msg.encode('utf-8'))                           #codificação da mensagem 
-                msg = str(hidrometro.get_consumo_atual())               #a msg é o consumo atual
-                time.sleep(4)                                           #pausa para envio de dados
-                if(hidrometro.get_statusAgua() == False):               #se caso bloquear durante o processo
-                    break
-                if not msg: break
+                msg = str(hidrometro.get_consumo_atual())                   #converte para string
+                while msg != '\x18':
+                    tcp.send(msg.encode('utf-8'))                           #codificação da mensagem 
+                    msg = str(hidrometro.get_consumo_atual())               #a msg é o consumo atual
+                    
+                    dado = int(msg)
+                    hidrometro.atualizarHistorico(dado)
+                    time.sleep(4)                                           #pausa para envio de dados
 
-            print ('mensagem enviada' )                                 #finalização da conexão
-            tcp.close()
-        else:
-            print("Seu hidrômetro encontra-se bloqueado, entre em contato com a empresa distribuidora!!")
-            time.sleep(4)                                               
+                    
+                    if(hidrometro.get_statusAgua() == False):               #se caso bloquear durante o processo
+                        break
+                    if not msg: break
+
+                print ('mensagem enviada' )                                 #finalização da conexão
+                tcp.close()
+            else:
+                print("Seu hidrômetro encontra-se bloqueado, entre em contato com a empresa distribuidora!!")
+                time.sleep(4)   
+    except:
+        print("Falha no envio de dados!")                                            
 
 #função que recebe o bloqueio e desbloqueio do hidrometro  - em 'status_agua" --------------------------------------
 def recebeDados():
     #HOST = socket.gethostbyname(socket.gethostname())               # Capta o endereco IP do Servidor
     HOST = HOST1
-    PORT_SERVER = 8009                                              # Porta que o Servidor está
+    PORT_SERVER = 5000                                              # Porta que o Servidor está
     
     tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)         #conexão TCP
     orig = (HOST, PORT_SERVER)
@@ -61,12 +69,22 @@ def recebeDados():
 
         try:
             #ifs para controlar bloqueio do hidrometro
+            print(msg)
             if (msg == 'desbloqueado'):                                        
-                hidrometro.atualizarStatus("ativo")                     #atualização de novo status
-                print ("Status atual do hidrômetro: ativo")
+                hidrometro.atualizarStatus("desbloqueado")                     #atualização de novo status
+                print ("Status atual do hidrômetro: desbloqueado")
             elif (msg == 'bloqueado'):
                 hidrometro.atualizarStatus("bloqueado")
                 print ("Status atual do hidrômetro: bloqueado")
+            elif (msg == 'historico'):
+                listaHistorico = hidrometro.get_historico()
+                print("HISTÓRICO DAS 10 ÚLTIMAS VAZÕES:\n")
+                print(listaHistorico)
+                """for i in range (len(listaHistorico)):
+                    print(listaHistorico[i])"""
+            elif (msg == 'consumo total'):
+                print("Consumo total do período: ",hidrometro.get_consumo_total())
+                print("\n")
             #else para caso seja um número controla a vazao
             else:
                 vazao = int(msg)
@@ -92,8 +110,8 @@ def verificacaoVazamento():
         if (hidrometro.vazamento() == True):                                #Caso tenha vazamento - alerta de vazamento
             print("STATUS: !!! ENCONTRADO VAZAMENTO NA REDE !!! \nHIDRÔMETRO: ",hidrometro.get_matricula(), "no endereço:", hidrometro.get_endereco())                  
         else: 
-            print("STATUS: Hidrômetro funcionando normalmente!!");          #Sem vazamento
-        time.sleep(10)                                                      #Tempo de verificação
+            print("STATUS: Hidrômetro sem vazamentos!!");          #Sem vazamento
+        time.sleep(15)                                                      #Tempo de verificação
 
 #função para fazer a atualização do consumo total
 def somaConsumoTotal():
