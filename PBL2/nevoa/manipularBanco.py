@@ -208,8 +208,6 @@ def consultarStatus_vazamento(id):
 
 
 
-mostrarBDTela("2")
-
 
 
 

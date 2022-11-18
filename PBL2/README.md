@@ -29,14 +29,12 @@
 
 
 
+# Acesso ao projeto
+  Repositório MI-REDES_DE_COMPUTADORES>PBL2
 
-  
 # Desenvolvedoras
 <br /><a href="https://github.com/AndrezaNobrega">Andreza Nóbrega</a>
 <br /><a href="https://github.com/Evelynsuzarte">Evelyn Suzarte</a>
-
-# Acesso
- - colocar links do dockerhub
 
 # Tecnologias
 
@@ -52,8 +50,7 @@
 
 
 # Solução
-  (descrever toda a solução do projeto por alto, quando formos falar sobre cada componente especificamente, iremos dar uma aprofundada)
-  -MQTT
+
   <p2>É iniciado um número desejado de hidrômetros através do terminal, selecionando o seu setor e seu nível de vazão, em seguida devemos iniciar o servidor para recebimento dos dados e logo após conectar a névoa, onde será processados as questões da média, bloqueio, etc. </p2>
 # Componentes 
  
@@ -88,5 +85,8 @@ Visualização dos n hidrômetros, Visualizar hidrômetro selecionado,Bloqueio p
 <p2> No banco de dados é manipulado as buscas, criações e atualizações nos dados. As alterações são feitas a partir dos nós da névoa. Ao criar um hidrômetro,é solicitado o setor a que ele pertence, nesse momento, é criado um banco para o setor (que é a névoa), caso não exista, e é inserido na tabela de hidrômetros, assim como, no momento que é criado um hidrômetro, também é criado uma tabela de histórico para ele. A cada interação com o banco é solicitado o id e o setor do hidrômetro para poder se buscar a tabela que ele existe. </p2> 
  
  # Demonstração 
- 
+ Para execução do código é necessário a inicialização do hidrômetro (no arquivo hidroPublisher) informando os dados do setor e da vazão, depois inicializa o servidor (no arquivo servidor) e depois o nó da névoa (no arquivo noNevoa) inserindo o setor pertencente.
+
+
  # Considerações finais 
+ O projeto desenvolvido não foi concluído com êxito, alguns requisitos não foram construídos.
